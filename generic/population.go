@@ -105,7 +105,7 @@ func (p Population) pick() int {
 	return index
 }
 
-//genProbability retruns the probabilities selecting each DNA in the DNAset
+//genProbability retruns the probabilities selecting each DNA in the _DNASet
 func (p Population) genProbability() []float64 {
 	total := p.getTotalScore() + float64(len(p.entities))
 	probSum := []float64{}
@@ -153,7 +153,7 @@ func crossOver(i, j DNA) DNA {
 
 func (p Population) mutate(child DNA) {
 	if r1.Float64() <= p.mutation {
-		i, b := r1.Intn(len(p.finalVal)), Random(32, 122)
+		i, b := r1.Intn(len(p.finalVal)), random(32, 122)
 		child.chromosome[i] = b
 	}
 }

@@ -1,15 +1,27 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"learn/generic/generic"
-	"math/rand"
-	"time"
 )
 
-var s1 = rand.NewSource(time.Now().UnixNano())
-var r1 = rand.New(s1)
+var popNum int
+var str string
+var mutation float64
+
+func init() {
+	flag.IntVar(&popNum, "pop-num", 20, "the poplation of the system")
+	flag.IntVar(&popNum, "p", 20, "the poplation of the system (shorthand)")
+	flag.StringVar(&str, "str", "genetic", "the string to generate")
+	flag.StringVar(&str, "s", "genetic", "the string to generate (shorthand)")
+	flag.Float64Var(&mutation, "mutation", 0.01, "the rate of mutation")
+	flag.Float64Var(&mutation, "m", 0.01, "the rate of mutation (shorthand)")
+	fmt.Println("hello")
+}
 
 func main() {
-	generic.GenerateString([]byte("gentic algorithm is cool"), 1500, 0.1)
-	// fmt.Println(' ')
+	flag.Parse()
+	generic.GenerateString([]byte(str), popNum, mutation)
+	// fmt.Println(str, popNum, mutation)
 }

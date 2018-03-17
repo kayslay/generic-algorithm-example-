@@ -25,7 +25,7 @@ func NewDNA(final []byte) DNA {
 
 func generateChromosome(b []byte, len int) []byte {
 	for i := 0; i < len; i++ {
-		b[i] = Random(32, 122)
+		b[i] = random(32, 122)
 	}
 	return b
 }
@@ -41,7 +41,7 @@ func (d DNA) Score() float64 {
 	return score
 }
 
-func Random(from, to int) byte {
+func random(from, to int) byte {
 	diff := math.Abs(float64(to - from))
 	return byte(r1.Intn(int(diff)) + from)
 }
