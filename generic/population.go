@@ -45,7 +45,7 @@ func GenerateString(b []byte, p int, m float64) {
 	for str != string(b) {
 		child := d.Reproduce()
 		str = child.String()
-		fmt.Println(str, child.Score(), d.entities[0].Score(), d.entities[len(d.entities)-1].Score(), step)
+		fmt.Println(str, fmt.Sprintf("| %.2f%% close to the real deal |", (child.Score()*100)/float64(len(b))), fmt.Sprintf(" %d steps |", step))
 		// d.V()
 		step++
 	}
